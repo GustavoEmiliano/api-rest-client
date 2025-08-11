@@ -3,6 +3,8 @@ package com.emiliano.tarefa_crud.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import com.emiliano.tarefa_crud.entities.Client;
+
 public class ClientDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -14,9 +16,17 @@ public class ClientDTO implements Serializable {
 	private Integer children;
 
 	public ClientDTO() {
-
 	}
 
+	public ClientDTO(Client entity) {
+		this.id = entity.getId();
+		this.name = entity.getName();
+		this.cpf = entity.getCpf();
+		this.income = entity.getIncome();
+		this.birthDate = entity.getBirthDate();
+		this.children = entity.getChildren();
+	}
+	
 	public ClientDTO(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
 		this.id = id;
 		this.name = name;
@@ -24,15 +34,6 @@ public class ClientDTO implements Serializable {
 		this.income = income;
 		this.birthDate = birthDate;
 		this.children = children;
-	}
-
-	public ClientDTO(ClientDTO entity) {
-		this.id = entity.getId();
-		this.name = entity.getName();
-		this.cpf = entity.getCpf();
-		this.income = entity.getIncome();
-		this.birthDate = entity.getBirthDate();
-		this.children = entity.getChildren();
 	}
 
 	public Long getId() {
